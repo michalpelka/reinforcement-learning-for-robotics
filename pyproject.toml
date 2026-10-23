@@ -1,0 +1,40 @@
+[project]
+name = "rl-robotics"
+version = "0.1.0"
+description = "Reinforcement learning for robotics: balance bot in MuJoCo, trained with PPO"
+readme = "README.md"
+requires-python = "==3.12.*"
+
+# Versions mirror Dockerfile.cpu so local and container runs match
+dependencies = [
+    "torch==2.11.0",
+    "onnxscript==0.7.0",
+    "mujoco==3.7.0",
+    "gymnasium[mujoco]==1.2.3",
+    "tensorboard==2.20.0",
+    "tensorboardX==2.6.5",
+    "mediapy==1.2.6",
+    "matplotlib==3.10.8",
+    "onnx==1.21.0",
+    "onnxruntime==1.25.1",
+    "jupyterlab==4.5.6",
+    "ipykernel",
+    # mediapy 1.2.6 fails to import with numpy 2.5
+    "numpy<2.5",
+]
+
+[tool.uv]
+# Notebooks and scripts only, nothing to build or install
+package = false
+
+# CPU-only PyTorch on Linux x86_64 (the default PyPI wheel pulls in CUDA).
+# Other platforms already get CPU builds from PyPI.
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", marker = "sys_platform == 'linux' and platform_machine == 'x86_64'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

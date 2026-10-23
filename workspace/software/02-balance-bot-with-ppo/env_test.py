@@ -1,7 +1,7 @@
 import mujoco
 from pathlib import Path
 
-MJCF_PATH = "/workspace/mechanical/FreeCAD/bala2-fire/bala2-fire-simplified.xml"
+MJCF_PATH = Path(__file__).resolve().parents[2] / "mechanical/FreeCAD/bala2-fire/bala2-fire-simplified.xml"
 
 model = mujoco.MjModel.from_xml_path(str(MJCF_PATH))
 

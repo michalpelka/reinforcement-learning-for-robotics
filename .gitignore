@@ -24,3 +24,6 @@ videos/
 
 # Others
 .Trash-*/
+
+# uv virtual environment
+.venv/
