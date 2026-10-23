@@ -48,7 +48,7 @@ uv run python -m ipykernel install --sys-prefix --name rl-env --display-name "Py
 Start JupyterLab:
 
 ```sh
-uv run jupyter lab workspace
+uv run jupyter lab --notebook-dir=workspace
 ```
 
 Start TensorBoard in a second terminal:
